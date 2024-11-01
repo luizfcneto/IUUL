@@ -5,10 +5,18 @@ export default class Aluno {
     #n2;
 
     constructor(matricula, nome){
-        this.#matricula = matricula;
-        this.#nome = nome;
-        this.#n1 = null;
-        this.#n2 = null;
+        try {
+            if(matricula && nome){
+                this.#matricula = matricula;
+                this.#nome = nome;
+                this.#n1 = null;
+                this.#n2 = null;
+            }else {
+                throw new Error("Não foi possível criar novo Aluno, informações obrigatórias não fornecidas corretamente");
+            }
+        }catch(error){
+            console.error(error.message);
+        }
     }
 
     lancarNota(nota, prova){
